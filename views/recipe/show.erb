@@ -1,0 +1,64 @@
+<% recipe.each do |info| %>
+<div class="recipe_container">
+
+  <div class="heading_container recipe_title">
+    <div class="blue_box"></div>
+      <h2><%= info["recipe_name"] %></h2>
+  </div>
+
+  <div class="recipe_img">
+    <img src="<%= info["image_url"] %>" alt="image"></li>
+  </div>  
+  <div class="small_text">
+    <a href="<%= info["source"] %>" target="_blank">Source</a>
+  </div>
+
+
+  <div class="recipe_basic_information">
+    <div>
+      <label for="serving_size"><p>Serving size</p></label>
+      <strong><p><%= info["serving_size"] %></p></strong>
+    </div>
+    <div>
+      <label for="prep_time"><p>Prep time</p></label>
+      <strong><p><%= info["prep_time"] %></p></strong>
+    </div>
+    <div>
+      <label for="cook_time"><p>Cook time</p></label>
+      <strong><p><%= info["cook_time"] %></p></strong>
+    </div>
+  </div>
+
+  <div class="ingredients_container">
+    <label for="ingredients"><p>Ingredients</p></label>
+    <%= ingredients %>
+  </div>
+  <div class="method_container">
+    <label for="method"><p>Method</p></label>
+    <%= method %>
+  </div>
+
+  <div class="nutrition_grid">
+    <label for="nutrition"><p>Nutritional Information</p></label>
+    <div >
+      <ul class="nutrition_display">
+        <li><strong>Calories:</strong> <%= info["calories"] %></li>
+        <li><strong>Total fat:</strong> <%= info["total_fat"] %></li>
+        <li><strong>Saturated fat:</strong> <%= info["saturated_fat"] %></li>
+        <li><strong>Cholesterol:</strong> <%= info["cholesterol"] %></li>
+        <li><strong>Sodium:</strong> <%= info["sodium"] %></li>
+        <li><strong>Total carb:</strong> <%= info["total_carb"] %></li>
+        <li><strong>Dietary fibre:</strong> <%= info["dietary_fibre"] %></li>
+        <li><strong>Sugars:</strong> <%= info["sugars"] %></li>
+        <li><strong>Protein:</strong> <%= info["protein"] %></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="btn">
+  <form action="/souperb/recipe/<%=info["id"]%>/edit">
+    <input type="submit" value="EDIT">
+  </form>
+  </div>
+</div>
+<% end %>

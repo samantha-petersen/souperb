@@ -1,0 +1,92 @@
+<form action="/souperb/recipe/<%=recipe["id"]%>/edit" method="POST">
+  <input type="hidden" name="_method" value="PUT">
+  <div class="recipe_form_container">
+    <div class="recipe_2row_container">
+      <input type="text" value="<%= recipe["recipe_name"] %>" name="recipe_name">
+      <input type="text" value="<%= recipe["serving_size"] %>" name="serving_size">
+      <input type="text" value="<%= recipe["prep_time"] %>" name="prep_time">
+      <input type="text" value="<%= recipe["cook_time"] %>" name="cook_time">
+    </div>
+    <div class="recipe_1row_container">
+      <input type="text" value="<%= recipe["image_url"] %>" name="image_url">
+      <input type="text" value="<%= recipe["source"] %>" name="source">
+    </div>
+    <div class="categories_container">
+      <label for="categories"> <p>Select categories</p> </label>
+      <div class="checkbox_container">
+        <label class="container">Breakfast
+          <input type="checkbox" name="breakfast" <%= categories["breakfast"] == "t" ? "checked" : "" %>>
+        </label>
+        <label class="container">Lunch
+          <input type="checkbox" name="lunch" <%= categories["lunch"] == "t" ? "checked" : "" %>>
+        </label>
+        <label class="container">Dinner
+          <input type="checkbox" name="dinner" <%= categories["dinner"] == "t" ? "checked" : "" %>>
+        </label>
+        <label class="container">Dessert
+          <input type="checkbox" name="dessert" <%= categories["dessert"] == "t" ? "checked" : "" %>>
+        </label>
+        <label class="container">Favourite
+          <input type="checkbox" name="favourite" <%= categories["favourite"] == "t" ? "checked" : "" %>>
+        </label>
+      </div>
+    </div>
+    <label for="ingredients"><p>Ingredients</p></label>
+    <div class="recipe_1row_container">
+      <textarea name="ingredients" cols="50" rows="4"><%= recipe["ingredients"] %></textarea>
+    </div>
+    <label for="method"><p>Method</p></label>
+    <div class="recipe_1row_container">
+      <textarea name="method" cols="50" rows="4"><%= recipe["method"] %></textarea>
+    </div>
+
+    <label for="ingredient amount"><p>Nutrition</p></label>
+    <div class="recipe_3row_container">
+      <div>
+        <label for="calories">Calories</label>
+        <input type="number" step="0.01" value="<%= recipe["calories"] %>" name="calories">
+      </div>
+      <div>
+        <label for="calories">Total fat</label>
+        <input type="number" step="0.01" value="<%= recipe["total_fat"] %>" name="total_fat">
+      </div>
+      <div>
+        <label for="calories">Saturated fat</label>
+        <input type="number" step="0.01" value="<%= recipe["saturated_fat"] %>" name="saturated_fat">
+      </div>
+      <div>
+        <label for="calories">Cholesterol</label>
+        <input type="number" step="0.01" value="<%= recipe["cholesterol"] %>" name="cholesterol">
+      </div>
+      <div>
+        <label for="calories">Sodium</label>
+        <input type="number" step="0.01" value="<%= recipe["sodium"] %>" name="sodium">
+      </div>
+      <div>
+        <label for="calories">Total carbohydrate</label>
+        <input type="number" step="0.01" value="<%= recipe["total_carb"] %>" name="total_carb">
+      </div>
+      <div>
+        <label for="calories">Dietary fibre</label>
+        <input type="number" step="0.01" value="<%= recipe["dietary_fibre"] %>" name="dietary_fibre">
+      </div>
+      <div>
+        <label for="calories">Sugars</label>
+        <input type="number" step="0.01" value="<%= recipe["sugars"] %>" name="sugars">
+      </div>
+      <div>
+        <label for="calories">Protein</label>
+        <input type="number" step="0.01" value="<%= recipe["protein"] %>" name="protein">
+      </div>
+    </div>
+    <div class="btn">
+      <input type="submit" value="UPDATE">
+    </div>
+  </div>
+</form>
+  <div class="btn delete_btn">
+      <form action="/souperb/recipe/<%=recipe["id"]%>/edit" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="DELETE">
+    </form>
+  </div>

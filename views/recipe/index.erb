@@ -1,0 +1,70 @@
+<div class="header_img_container">
+  <div class="main_image_container"></div>
+  <form class="btn" action="/souperb/create">
+    <input type="submit" value="Add a new recipe">
+  </form>
+</div>
+
+<h3>Browse by category</h3>
+<div class="all_category_container">
+  <form action="/souperb/category" method="POST">
+    <div class="button_container">
+      <img src="./assets/breakfast.png" alt="breakfast">
+      <input class="btn" type="submit" value="Breakfast" name="category">
+    </div>
+  </form>
+  <form action="/souperb/category" method="POST">
+    <div class="button_container">
+      <img src="./assets/lunch.png" alt="lunch">
+      <input class="btn" type="submit" value="Lunch" name="category">
+    </div>
+  </form>
+    <form action="/souperb/category" method="POST">
+    <div class="button_container">
+      <img src="./assets/dinner.png" alt="dinner">
+      <input class="btn" type="submit" value="Dinner" name="category">
+    </div>
+  </form>
+    <form action="/souperb/category" method="POST">
+    <div class="button_container">
+      <img src="./assets/dessert.png" alt="dessert">
+      <input class="btn" type="submit" value="Dessert" name="category">
+    </div>
+  </form>
+    <form action="/souperb/category" method="POST">
+    <div class="button_container">
+      <img src="./assets/favourite.png" alt="favourites">
+      <input class="btn" type="submit" value="Favourite" name="category">
+    </div>
+  </form>
+  <form action="/souperb/category" method="POST">
+    <div class="button_container">
+      <img src="./assets/all.png" alt="all">
+        <input class="btn" type="submit" value="All" name="category">
+    </div>
+  </form>
+  </div>
+</div>
+
+<h3>Recently added</h3>
+<div class="recently_added_container">
+  <% new_recipe.each do |recipe| %>
+    <form action="/souperb/recipe/<%=recipe["id"]%>" method="GET">
+      <div class="recipe_thumbnail recent_thumbnail">
+        <a href="/souperb/recipe/<%=recipe["id"]%>">
+          <img src="<%= recipe["image_url"] %>">
+        </a>
+        <input type="submit" value="<%= recipe["recipe_name"] %>" name="category">
+      </div>
+    </form>
+  <% end %>
+</div>
+
+<div class="btn">
+  <%  if user_logged_in?() %>
+    <form action="/signout" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="LOGOUT">
+    </form>
+   <% end %>
+</div>
